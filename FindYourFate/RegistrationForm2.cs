@@ -19,6 +19,7 @@ namespace FindYourFate
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
+            panel4.Visible = false;
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -26,6 +27,7 @@ namespace FindYourFate
             panel1.Visible = false;
             panel3.Visible = false;
             panel2.Visible = true;
+            panel4.Visible = false;
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace FindYourFate
             panel2.Visible = false;
             panel3.Visible = false;
             panel1.Visible = true;
+            panel4.Visible = false;
 
         }
 
@@ -94,7 +97,7 @@ namespace FindYourFate
                     points += (int)numericUpDown10.Value;
                 }
             }
-            else if(radioButton1.Checked == true)
+            if(radioButton1.Checked == true)
             {
                 int profile = 0;
 
@@ -111,8 +114,45 @@ namespace FindYourFate
                     profile = 3;
                 }
             }
-            else if(radioButton2.Checked == true)
+            if(radioButton2.Checked == true)
             {
+                int education = 0;
+                int profile = 0;
+                if(radioButton7.Checked == true)
+                {
+                    label15.Text = "В какой сфере у вас образование?";
+                    panel4.Visible = true;
+                    education = 1;
+                    if (radioButton9.Checked == true)
+                    {
+                        profile = 1;
+                    }
+                    if (radioButton10.Checked == true)
+                    {
+                        profile = 2;
+                    }
+                    if (radioButton11.Checked == true)
+                    {
+                        profile = 3;
+                    }
+                }
+
+                if (radioButton8.Checked == true)
+                {
+                    education = 1;
+                    if (radioButton9.Checked == true)
+                    {
+                        profile = 1;
+                    }
+                    if (radioButton10.Checked == true)
+                    {
+                        profile = 2;
+                    }
+                    if (radioButton11.Checked == true)
+                    {
+                        profile = 3;
+                    }
+                }
 
             }
         }
@@ -122,6 +162,23 @@ namespace FindYourFate
             panel3.Visible = true;
             panel1.Visible = false;
             panel2.Visible = false;
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton7_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton12.Visible = false;
+            panel4.Visible = true;
+        }
+
+        private void radioButton8_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton12.Visible = true;
+            panel4.Visible = true;
         }
     }
 }
