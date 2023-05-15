@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace FindYourFate
 {
-    public class Professions
+    public class Users
     {
         public int Id;
-        public string Name { get; set; }
+        public string FirstName;
+        public string LastName;
+        public string Email;
+        public string Password;
         public int HollandResult;
         public string Subjects;
         public int Profile;
         public int Points;
         public int Higher_ed;
-        public string Speciality;
-        public int temp = 0;
     }
 }

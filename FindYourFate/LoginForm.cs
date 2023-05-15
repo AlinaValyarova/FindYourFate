@@ -15,15 +15,11 @@ namespace FindYourFate
     public partial class LoginForm : Form
     {
         DataBase database = new DataBase();
-
-        public string ImportantValue
-        {
-            get { return textBox1.Text; }
-        }
         public LoginForm()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -45,6 +41,7 @@ namespace FindYourFate
             else
             {
                 string email = textBox1.Text;
+               
                 textBox2.UseSystemPasswordChar = true; ///исправить то, как выглядит пароль (сделать как у Камиля)
                 var password = textBox2.Text;
 
@@ -53,6 +50,8 @@ namespace FindYourFate
                 DataTable dt = new DataTable();
 
                 string querystring = $"select Id, Email, Password from dbo.Users where Email = '{email}' and Password = {password}";
+
+                
 
 
                 SqlCommand command = new SqlCommand(querystring, database.getConnection());
@@ -63,9 +62,10 @@ namespace FindYourFate
                 if (dt.Rows.Count == 1)
                 {
                     MessageBox.Show("Вход выполнен!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MainForm mainForm = new MainForm();
+                    MainForm mainForm = new MainForm(textBox1.Text.ToString());
+                    mainForm.Show();
                     this.Hide();
-                    mainForm.ShowDialog();
+
                 }
                 else
                 {
@@ -77,6 +77,7 @@ namespace FindYourFate
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             textBox1.ForeColor = Color.Black;
+
         }
 
         private void textBox1_Click(object sender, EventArgs e)
@@ -111,8 +112,13 @@ namespace FindYourFate
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MainForm mf = new MainForm();
+            ChangeForm mf = new ChangeForm();
             mf.ShowDialog();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

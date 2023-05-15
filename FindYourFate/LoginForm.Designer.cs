@@ -101,7 +101,7 @@ namespace FindYourFate
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(134, 318);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(164, 17);
+            this.label2.Size = new System.Drawing.Size(161, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Нет личного кабинета?";
             // 
@@ -110,7 +110,7 @@ namespace FindYourFate
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(144, 335);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(144, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(144, 16);
             this.linkLabel1.TabIndex = 7;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Зарегистрироваться";
@@ -121,7 +121,7 @@ namespace FindYourFate
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Location = new System.Drawing.Point(157, 370);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(118, 17);
+            this.linkLabel2.Size = new System.Drawing.Size(114, 16);
             this.linkLabel2.TabIndex = 8;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Забыли пароль?";
@@ -154,6 +154,7 @@ namespace FindYourFate
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,7 +163,6 @@ namespace FindYourFate
         #endregion
 
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
@@ -170,6 +170,7 @@ namespace FindYourFate
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Button button2;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }
 
