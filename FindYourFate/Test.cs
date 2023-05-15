@@ -23,6 +23,7 @@ namespace FindYourFate
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+            radioButton42.Text = "Музыкант";
 
         }
 
@@ -605,7 +606,7 @@ namespace FindYourFate
         private void button21_Click(object sender, EventArgs e)
         {
             //21 вопрос
-            radioButton42.Text = "Музыкант";
+
             if (radioButton41.Checked == false && radioButton42.Checked == false)
             {
                 MessageBox.Show("Нужно выбрать одну из профессий!", "Упс!");

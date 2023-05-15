@@ -7,11 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace FindYourFate
 {
     public partial class LoginForm : Form
     {
+        DataBase database = new DataBase();
+
+        public string ImportantValue
+        {
+            get { return textBox1.Text; }
+        }
         public LoginForm()
         {
             InitializeComponent();
@@ -36,9 +44,33 @@ namespace FindYourFate
             }
             else
             {
-                MainForm mf = new MainForm();
-                mf.ShowDialog();
-                this.Hide();
+                string email = textBox1.Text;
+                textBox2.UseSystemPasswordChar = true; ///исправить то, как выглядит пароль (сделать как у Камиля)
+                var password = textBox2.Text;
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+
+                DataTable dt = new DataTable();
+
+                string querystring = $"select Id, Email, Password from dbo.Users where Email = '{email}' and Password = {password}";
+
+
+                SqlCommand command = new SqlCommand(querystring, database.getConnection());
+
+                sqlDataAdapter.SelectCommand = command;
+                sqlDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    MessageBox.Show("Вход выполнен!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MainForm mainForm = new MainForm();
+                    this.Hide();
+                    mainForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Такого аккаунта не существует!", "Не существует!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -79,9 +111,8 @@ namespace FindYourFate
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrationForm2 rf = new RegistrationForm2();
-            this.Hide();
-            rf.ShowDialog();
+            MainForm mf = new MainForm();
+            mf.ShowDialog();
         }
     }
 }
