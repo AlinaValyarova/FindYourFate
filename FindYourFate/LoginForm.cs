@@ -112,7 +112,7 @@ namespace FindYourFate
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ChangeForm mf = new ChangeForm();
+            ChangeForm mf = new ChangeForm(textBox1.Text.ToString());
             mf.ShowDialog();
         }
 

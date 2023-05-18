@@ -63,9 +63,9 @@ namespace FindYourFate
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.label14 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.label12 = new System.Windows.Forms.Label();
             this.radioButton12 = new System.Windows.Forms.RadioButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.radioButton11 = new System.Windows.Forms.RadioButton();
@@ -426,15 +426,17 @@ namespace FindYourFate
             this.panel3.Size = new System.Drawing.Size(465, 103);
             this.panel3.TabIndex = 23;
             // 
-            // label12
+            // radioButton8
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(11, 11);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(282, 20);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "У вас есть высшее обраование?";
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(15, 72);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(54, 21);
+            this.radioButton8.TabIndex = 2;
+            this.radioButton8.TabStop = true;
+            this.radioButton8.Text = "Нет";
+            this.radioButton8.UseVisualStyleBackColor = true;
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton8_CheckedChanged);
             // 
             // radioButton7
             // 
@@ -448,17 +450,15 @@ namespace FindYourFate
             this.radioButton7.UseVisualStyleBackColor = true;
             this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton7_CheckedChanged);
             // 
-            // radioButton8
+            // label12
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(15, 72);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(54, 21);
-            this.radioButton8.TabIndex = 2;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Нет";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton8_CheckedChanged);
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(11, 11);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(282, 20);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "У вас есть высшее обраование?";
             // 
             // radioButton12
             // 
@@ -522,9 +522,9 @@ namespace FindYourFate
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label15.Location = new System.Drawing.Point(3, 4);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(289, 18);
+            this.label15.Size = new System.Drawing.Size(184, 18);
             this.label15.TabIndex = 7;
-            this.label15.Text = "В какой сфере у вас есть опыт работы?";
+            this.label15.Text = "В какой у вас есть опыт?";
             this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
             // RegistrationForm2

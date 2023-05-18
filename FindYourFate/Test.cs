@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FindYourFate;
+using System.Data.SqlClient;
 
 namespace FindYourFate
 {
@@ -19,9 +20,10 @@ namespace FindYourFate
         public int O;
         public int P;
         public int A;
-        public Test()
+        public Test(string str)
         {
             InitializeComponent();
+            label32.Text = str;
             StartPosition = FormStartPosition.CenterScreen;
             radioButton42.Text = "Музыкант";
 
@@ -829,6 +831,7 @@ namespace FindYourFate
             panel28.Visible = false;
         }
 
+        DataBase database = new DataBase();
         private void button30_Click(object sender, EventArgs e)
         {
             //30 вопрос
@@ -838,26 +841,127 @@ namespace FindYourFate
             }
             if (radioButton59.Checked == true)
             {
+                ///////////////////////////////////////////////////////////////////////////////////////
                 O += 1;
                 int[] arr = { R, I, S, O, P, A };
                 int max = arr.Max();
                 int maxlet = arr.ToList().IndexOf(max);
-                label31.Text = maxlet.ToString();
-                this.Hide();
-                RegistrationForm2 rg = new RegistrationForm2();
-                rg.ShowDialog();
 
+                DataTable table = new DataTable();
+                DataBase dataBase = new DataBase();
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                ChangeForm c = new ChangeForm(label32.Text);
+                if (c.textBox3.Text == "")
+                {
+                    string querychecking = $"select count(*) from Users";
+
+                    SqlCommand command1 = new SqlCommand(querychecking, database.getConnection());
+                    adapter.SelectCommand = command1;
+                    adapter.Fill(table);
+                    int id = table.Rows.Count;
+
+                    string insertResult = $" update Users set HollandResult = {maxlet} where Email = '{label32.Text}'";
+                    SqlCommand command = new SqlCommand(insertResult, dataBase.getConnection());
+
+                    dataBase.openConnetion();
+
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Данные введены успешно!", "Успех!");
+                        this.Hide();
+                        RegistrationForm2 rg = new RegistrationForm2();
+                        rg.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные не введены");
+                    }
+                    dataBase.closeConnetion();
+                }
+                else
+                {
+                    string insertResult = $" update Users set HollandResult = {maxlet} where Email = '{label32.Text}'";
+                    SqlCommand command = new SqlCommand(insertResult, dataBase.getConnection());
+
+                    dataBase.openConnetion();
+
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Данные введены успешно!", "Успех!");
+                        this.Hide();
+                        ChangeForm rg = new ChangeForm(label32.Text);
+                        rg.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные не введены");
+                    }
+                    dataBase.closeConnetion();
+                }
             }
             if (radioButton60.Checked == true)
             {
+                DataTable table = new DataTable();
+                DataBase dataBase = new DataBase();
+                SqlDataAdapter adapter = new SqlDataAdapter();
+
                 A += 1;
                 int[] arr = { R, I, S, O, P, A };
                 int max = arr.Max();
                 int maxlet = arr.ToList().IndexOf(max);
-                label31.Text = maxlet.ToString();
-                this.Hide();
-                RegistrationForm2 rg = new RegistrationForm2();
-                rg.ShowDialog();
+
+                int number;
+                bool result = int.TryParse(label32.Text, out number);
+
+                if (result == true)
+                {
+                    string querychecking = $"select count(*) from Users";
+
+                    SqlCommand command1 = new SqlCommand(querychecking, database.getConnection());
+                    adapter.SelectCommand = command1;
+                    adapter.Fill(table);
+                    int id = table.Rows.Count;
+
+                    string insertResult = $" update Users set HollandResult = {maxlet} where Id = {number}";
+                    SqlCommand command = new SqlCommand(insertResult, dataBase.getConnection());
+
+                    dataBase.openConnetion();
+
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Данные введены успешно!", "Успех!");
+                        this.Hide();
+                        RegistrationForm2 rg = new RegistrationForm2();
+                        rg.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные не введены");
+                    }
+                    dataBase.closeConnetion();
+                }
+                else
+                {
+                    string insertResult = $" update Users set HollandResult = {maxlet} where Email = '{label32.Text}'";
+                    SqlCommand command = new SqlCommand(insertResult, dataBase.getConnection());
+
+                    dataBase.openConnetion();
+
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Данные введены успешно!", "Успех!");
+                        this.Hide();
+                        ChangeForm rg = new ChangeForm(label32.Text);
+                        rg.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данные не введены");
+                    }
+                    dataBase.closeConnetion();
+                }
+
+
             }
         }
 

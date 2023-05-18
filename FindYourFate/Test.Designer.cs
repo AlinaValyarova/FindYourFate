@@ -60,7 +60,6 @@ namespace FindYourFate
             this.panel28 = new System.Windows.Forms.Panel();
             this.panel29 = new System.Windows.Forms.Panel();
             this.label31 = new System.Windows.Forms.Label();
-            this.pictureBox98 = new System.Windows.Forms.PictureBox();
             this.linkLabel30 = new System.Windows.Forms.LinkLabel();
             this.button30 = new System.Windows.Forms.Button();
             this.radioButton59 = new System.Windows.Forms.RadioButton();
@@ -309,6 +308,7 @@ namespace FindYourFate
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -329,7 +329,6 @@ namespace FindYourFate
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
             this.panel29.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox98)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox99)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox100)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox95)).BeginInit();
@@ -835,8 +834,8 @@ namespace FindYourFate
             // 
             // panel29
             // 
+            this.panel29.Controls.Add(this.label32);
             this.panel29.Controls.Add(this.label31);
-            this.panel29.Controls.Add(this.pictureBox98);
             this.panel29.Controls.Add(this.linkLabel30);
             this.panel29.Controls.Add(this.button30);
             this.panel29.Controls.Add(this.radioButton59);
@@ -844,9 +843,9 @@ namespace FindYourFate
             this.panel29.Controls.Add(this.pictureBox99);
             this.panel29.Controls.Add(this.pictureBox100);
             this.panel29.Controls.Add(this.label30);
-            this.panel29.Location = new System.Drawing.Point(-9, -4);
+            this.panel29.Location = new System.Drawing.Point(-9, 2);
             this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(804, 589);
+            this.panel29.Size = new System.Drawing.Size(804, 583);
             this.panel29.TabIndex = 45;
             // 
             // label31
@@ -857,14 +856,6 @@ namespace FindYourFate
             this.label31.Size = new System.Drawing.Size(0, 17);
             this.label31.TabIndex = 16;
             this.label31.Click += new System.EventHandler(this.label31_Click);
-            // 
-            // pictureBox98
-            // 
-            this.pictureBox98.Location = new System.Drawing.Point(80, 17);
-            this.pictureBox98.Name = "pictureBox98";
-            this.pictureBox98.Size = new System.Drawing.Size(248, 50);
-            this.pictureBox98.TabIndex = 15;
-            this.pictureBox98.TabStop = false;
             // 
             // linkLabel30
             // 
@@ -3486,6 +3477,16 @@ namespace FindYourFate
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label32.Location = new System.Drawing.Point(57, 44);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(54, 17);
+            this.label32.TabIndex = 17;
+            this.label32.Text = "label32";
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3543,7 +3544,6 @@ namespace FindYourFate
             this.panel28.PerformLayout();
             this.panel29.ResumeLayout(false);
             this.panel29.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox98)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox99)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox100)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox95)).EndInit();
@@ -3942,7 +3942,6 @@ namespace FindYourFate
         private System.Windows.Forms.PictureBox pictureBox97;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Panel panel29;
-        private System.Windows.Forms.PictureBox pictureBox98;
         private System.Windows.Forms.LinkLabel linkLabel30;
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.RadioButton radioButton59;
@@ -3951,5 +3950,6 @@ namespace FindYourFate
         private System.Windows.Forms.PictureBox pictureBox100;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
     }
 }

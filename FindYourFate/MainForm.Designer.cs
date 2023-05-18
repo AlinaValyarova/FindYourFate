@@ -97,6 +97,7 @@ namespace FindYourFate
             this.показатьБольшеПрофессийToolStripMenuItem.Name = "показатьБольшеПрофессийToolStripMenuItem";
             this.показатьБольшеПрофессийToolStripMenuItem.Size = new System.Drawing.Size(296, 26);
             this.показатьБольшеПрофессийToolStripMenuItem.Text = "показать больше профессий";
+            this.показатьБольшеПрофессийToolStripMenuItem.Click += new System.EventHandler(this.показатьБольшеПрофессийToolStripMenuItem_Click);
             // 
             // выйтиToolStripMenuItem
             // 

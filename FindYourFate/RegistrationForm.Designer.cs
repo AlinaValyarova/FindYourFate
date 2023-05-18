@@ -45,6 +45,7 @@ namespace FindYourFate
             this.label6 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -186,12 +187,23 @@ namespace FindYourFate
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(-7, 1);
+            this.panel1.Location = new System.Drawing.Point(1, -8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(482, 598);
+            this.panel1.Size = new System.Drawing.Size(469, 594);
             this.panel1.TabIndex = 17;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.Location = new System.Drawing.Point(21, 39);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 17);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "label7";
             // 
             // RegistrationForm
             // 
@@ -238,5 +250,6 @@ namespace FindYourFate
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
     }
 }

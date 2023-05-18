@@ -9,8 +9,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AngleSharp;
-using AngleSharp.Dom;
 
 namespace FindYourFate
 {
@@ -44,9 +42,8 @@ namespace FindYourFate
             return new string(letters);
         }
 
-        List<Professions> professions = new List<Professions>();
+        public List<Professions> professions = new List<Professions>();
         List<Users> users = new List<Users>();
-        List<TempList> tl = new List<TempList>();
         private void MainForm_Load(object sender, EventArgs e)
         {
 
@@ -72,7 +69,7 @@ namespace FindYourFate
                         pf.Higher_ed = Convert.ToInt32(reader.GetValue(6));
                         pf.Speciality = ToUpperFirstLetter(reader.GetString(7));
 
-                        listBox1.Items.Add(pf);
+                        //listBox1.Items.Add(pf);
                         professions.Add(pf);
                         continue;
 
@@ -92,19 +89,18 @@ namespace FindYourFate
                 {
                     while (reader.Read()) 
                     {
+                        
                         Users u = new Users();
                         Professions pf = new Professions();
-                        u.Id = Convert.ToInt32(reader.GetValue(0));
-                        u.FirstName = reader.GetString(1);
-                        u.LastName = reader.GetString(2);
-                        u.Email = reader.GetString(3);
-                        u.Password = reader.GetString(4);
-                        u.HollandResult = Convert.ToInt32(reader.GetValue(5));
-                        u.Subjects = reader.GetString(6);
-                        u.Points = Convert.ToInt32(reader.GetValue(7));
-                        u.Higher_ed = Convert.ToInt32(reader.GetValue(8));
-
-
+                            u.Id = Convert.ToInt32(reader.GetValue(0));
+                            u.FirstName = reader.GetString(1);
+                            u.LastName = reader.GetString(2);
+                            u.Email = reader.GetString(3);
+                            u.Password = reader.GetString(4);
+                            u.HollandResult = Convert.ToInt32(reader.GetValue(5));
+                            u.Subjects = reader.GetString(6);
+                            u.Points = Convert.ToInt32(reader.GetValue(7));
+                            u.Higher_ed = Convert.ToInt32(reader.GetValue(8));
                         users.Add(u);
                         continue;
 
@@ -113,40 +109,50 @@ namespace FindYourFate
                 reader.Close();
             }
 
-            //for (int i = 0; i < professions.Count; i++)
-            //{
-            //    foreach (var u in users)
-            //    {
-            //        if (u.Email == label4.Text)
-            //        {
-            //            Professions pf = new Professions();
-            //            pf = professions[i];
-            //            if (pf.HollandResult == u.HollandResult)
-            //            {
-            //                if (pf.Subjects == u.Subjects)
-            //                {
-            //                    pf.temp += 1;
-            //                    if (pf.Profile == u.Profile)
-            //                    {
-            //                        pf.temp += 1;
-            //                        if (pf.Points <= u.Points)
-            //                        {
-            //                            pf.temp += 1;
-            //                            if (pf.Higher_ed == u.Higher_ed)
-            //                            {
-            //                                listBox1.Items.Add(pf);
-            //                                continue;
-            //                            }
-            //                        }
-            //                    }
-            //                }
-            //            }
+
+                foreach (var u in users)
+            { 
+
+                    if (u.Email == label4.Text)
+                    {
+                    for (int i = 0; i < professions.Count; i++)
+                    {
+                        Professions pf = new Professions();
+                        pf = professions[i];
+                        if (pf.HollandResult == u.HollandResult)
+                        {
+                            if (u.Subjects == pf.Subjects && u.Points <= pf.Points)
+                            {
+                                pf.temp += 30;
+                                
+                            }
+                            if (u.Profile == pf.Profile)
+                            {
+                                pf.temp += 20;
+                            }
+                            if(u.Higher_ed == 0)
+                            {
+                                if (u.Higher_ed == pf.Higher_ed)
+                                {
+                                    pf.temp += 100;
+                                }
+                            }
+                            continue;
+                        }
+                        continue;
+                    }
+                    var sortedList = professions.OrderByDescending(si => si.temp).ToList();
+                    for (int j = 0; j < 5; j++)
+                    {
+                        Professions p = new Professions();
+                        p = sortedList[j];
+                        listBox1.Items.Add(p);
+                    }
+                }
+            }
 
 
-            //        }
 
-            //    }
-            //}
 
         }
 
@@ -213,18 +219,32 @@ namespace FindYourFate
         private void изменитьАккаунтToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ChangeForm cf = new ChangeForm();
+            ChangeForm cf = new ChangeForm(label4.Text);
             cf.Show();
         }
 
         private void узнатьРезультатыТестыНаТипЛичностиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Results res = new Results();
+            res.Show();
         }
 
         private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void показатьБольшеПрофессийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            var sortedList = professions.OrderByDescending(si => si.temp).ToList();
+            for (int j = 5; j < 10; j++)
+            {
+                Professions p = new Professions();
+                p = sortedList[j];
+                listBox1.Items.Add(p);
+            }
+
         }
     }
 }
