@@ -23,9 +23,19 @@ namespace FindYourFate
             listBox1.DrawMode = DrawMode.OwnerDrawFixed;
             listBox1.ItemHeight = 70;
             listBox1.DrawItem += listBox1_DrawItem;
+            label1.Focus();
+            toolStripTextBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            toolStripTextBox1.Items.Add("По умолчанию");
+            toolStripTextBox1.Items.Add("По возрастанию баллов");
+            toolStripTextBox1.Items.Add("По убыванию баллов");
+            toolStripTextBox1.Items.Add("По алфавиту");
+            toolStripTextBox1.Text = "По умолчанию";
+
 
 
         }
+
+
 
         public class TempList
         {
@@ -46,7 +56,7 @@ namespace FindYourFate
         List<Users> users = new List<Users>();
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            listBox1.Items.Clear();
             string connectionString = @"Data Source = Project3DataBase.mssql.somee.com;" + "Initial Catalog=Project3DataBase;" + "User id=	cargoesbrr_SQLLogin_1;" + "Password=nchbzqmryy;";
             string sqlExpression = "SELECT * FROM Professions";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -245,6 +255,101 @@ namespace FindYourFate
                 listBox1.Items.Add(p);
             }
 
+        }
+
+        private void поУмолчаниюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripTextBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label1.Focus();
+            if (toolStripTextBox1.SelectedItem.ToString() == "По возрастанию баллов")
+            {
+                var myOtherList = listBox1.Items.Cast<Professions>().ToList();
+                var sortedList = myOtherList.OrderBy(si => si.Points).ToList();
+                listBox1.Items.Clear();
+                for (int j = 0; j < sortedList.Count; j++)
+                {
+                    Professions p = new Professions();
+                    p = sortedList[j];
+                    listBox1.Items.Add(p);
+                }
+            }
+            else if (toolStripTextBox1.SelectedItem.ToString() == "По убыванию баллов")
+            {
+                var myOtherList = listBox1.Items.Cast<Professions>().ToList();
+                var sortedList = myOtherList.OrderByDescending(si => si.Points).ToList();
+                listBox1.Items.Clear();
+                for (int j = 0; j < sortedList.Count; j++)
+                {
+                    Professions p = new Professions();
+                    p = sortedList[j];
+                    listBox1.Items.Add(p);
+                }
+
+
+            }
+            else if (toolStripTextBox1.SelectedItem.ToString() == "По алфавиту")
+            {
+                var myOtherList = listBox1.Items.Cast<Professions>().ToList();
+                var sortedList = myOtherList.OrderBy(si => si.Name).ToList();
+                listBox1.Items.Clear();
+                for (int j = 0; j < sortedList.Count; j++)
+                {
+                    Professions p = new Professions();
+                    p = sortedList[j];
+                    listBox1.Items.Add(p);
+                }
+
+
+            }
+
+            else if(toolStripTextBox1.SelectedItem.ToString() == "По умолчанию")
+            {
+                listBox1.Items.Clear();
+                foreach (var u in users)
+                {
+
+                    if (u.Email == label4.Text)
+                    {
+                        for (int i = 0; i < professions.Count; i++)
+                        {
+                            Professions pf = new Professions();
+                            pf = professions[i];
+                            if (pf.HollandResult == u.HollandResult)
+                            {
+                                if (u.Subjects == pf.Subjects && u.Points <= pf.Points)
+                                {
+                                    pf.temp += 30;
+
+                                }
+                                if (u.Profile == pf.Profile)
+                                {
+                                    pf.temp += 20;
+                                }
+                                if (u.Higher_ed == 0)
+                                {
+                                    if (u.Higher_ed == pf.Higher_ed)
+                                    {
+                                        pf.temp += 100;
+                                    }
+                                }
+                                continue;
+                            }
+                            continue;
+                        }
+                        var sortedList = professions.OrderByDescending(si => si.temp).ToList();
+                        for (int j = 0; j < 5; j++)
+                        {
+                            Professions p = new Professions();
+                            p = sortedList[j];
+                            listBox1.Items.Add(p);
+                        }
+                    }
+                }
+            }
         }
     }
 }

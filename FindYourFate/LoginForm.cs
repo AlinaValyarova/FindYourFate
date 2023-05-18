@@ -18,6 +18,7 @@ namespace FindYourFate
         public LoginForm()
         {
             InitializeComponent();
+            textBox2.UseSystemPasswordChar = true;
             StartPosition = FormStartPosition.CenterScreen;
 
         }
@@ -41,8 +42,6 @@ namespace FindYourFate
             else
             {
                 string email = textBox1.Text;
-               
-                textBox2.UseSystemPasswordChar = true; ///исправить то, как выглядит пароль (сделать как у Камиля)
                 var password = textBox2.Text;
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
@@ -82,19 +81,10 @@ namespace FindYourFate
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Equals("Почта"))
-            {
-                textBox1.Text = "";
-            }
         }
 
         private void textBox2_Click(object sender, EventArgs e)
         {
-            if(textBox2.Text.Equals("Пароль"))
-            {
-                textBox2.Text = "";
-            }
-            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

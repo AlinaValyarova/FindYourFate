@@ -26,6 +26,7 @@ namespace FindYourFate
             label32.Text = str;
             StartPosition = FormStartPosition.CenterScreen;
             radioButton42.Text = "Музыкант";
+            radioButton41.Text = "Редактор";
 
         }
 
