@@ -93,7 +93,7 @@ namespace FindYourFate
                 int id = table.Rows.Count;
                 label7.Text = id.ToString();
 
-                string queryregistration = $" insert into Users(FirstName, LastName, Email, Password) values ( N'{username}', N'{lastname}', N'{email}', N'{password}')";
+                string queryregistration = $" insert into Users(FirstName, LastName, Email, Password, Subjects, Points, Profile, Higher_ed, HollandResult) values ( N'{username}', N'{lastname}', N'{email}', N'{password}', N'',0,3,0, 0)";
 
                 SqlCommand command = new SqlCommand(queryregistration, dataBase.getConnection());
 
