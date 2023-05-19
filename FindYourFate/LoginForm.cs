@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using NLog;
 
 namespace FindYourFate
 {
@@ -22,22 +23,22 @@ namespace FindYourFate
             StartPosition = FormStartPosition.CenterScreen;
 
         }
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if(textBox1.Text == "" || textBox2.Text == "")
             {
+                
                 MessageBox.Show("Поля не могут быть пустыми", "Ошибка");
+                logger.Info("Пользователь оставил поля пустыми");
+
             }
             else
             {
@@ -61,14 +62,18 @@ namespace FindYourFate
                 if (dt.Rows.Count == 1)
                 {
                     MessageBox.Show("Вход выполнен!", "Успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Пользователь успешно вошел в аккаунт");
                     MainForm mainForm = new MainForm(textBox1.Text.ToString());
                     mainForm.Show();
                     this.Hide();
 
+
                 }
                 else
                 {
+                    logger.Info("Пользователь ввел логин или пароль, которых нет в базе данных");
                     MessageBox.Show("Такого аккаунта не существует!", "Не существует!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 }
             }
         }
@@ -95,16 +100,11 @@ namespace FindYourFate
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
+            logger.Info("Пользователь перешел на окно регистрации");
             RegistrationForm rf = new RegistrationForm();
             rf.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ChangeForm mf = new ChangeForm(textBox1.Text.ToString());
-            mf.ShowDialog();
-        }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {

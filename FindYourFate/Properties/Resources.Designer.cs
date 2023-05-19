@@ -573,6 +573,16 @@ namespace FindYourFate.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap artist {
+            get {
+                object obj = ResourceManager.GetObject("artist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Automechanuic {
             get {
                 object obj = ResourceManager.GetObject("Automechanuic", resourceCulture);
@@ -586,6 +596,16 @@ namespace FindYourFate.Properties {
         internal static System.Drawing.Bitmap biologist {
             get {
                 object obj = ResourceManager.GetObject("biologist", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap business {
+            get {
+                object obj = ResourceManager.GetObject("business", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -663,9 +683,29 @@ namespace FindYourFate.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap intellectual {
+            get {
+                object obj = ResourceManager.GetObject("intellectual", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logistics {
             get {
                 object obj = ResourceManager.GetObject("logistics", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap office {
+            get {
+                object obj = ResourceManager.GetObject("office", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -703,9 +743,29 @@ namespace FindYourFate.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap realistic {
+            get {
+                object obj = ResourceManager.GetObject("realistic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap salesman {
             get {
                 object obj = ResourceManager.GetObject("salesman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap social {
+            get {
+                object obj = ResourceManager.GetObject("social", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

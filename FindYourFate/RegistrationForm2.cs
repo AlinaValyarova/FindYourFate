@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using NLog;
 
 namespace FindYourFate
 {
@@ -23,6 +24,7 @@ namespace FindYourFate
             panel4.Visible = false;
         }
 
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             panel1.Visible = false;
@@ -129,13 +131,14 @@ namespace FindYourFate
                 int id = table.Rows.Count;
 
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                string insertResult = $" update Users set Subjects = N'{sub}', Points = {points/amount}, Profile = {3}, Higher_ed = {1} where Id = {id}";
+                string insertResult = $" update Users set Subjects = N'{sub}', Points = {points/amount}, Profile = {3}, Higher_ed = {0} where Id = {id}";
                 SqlCommand command = new SqlCommand(insertResult, dataBase.getConnection());
 
                 dataBase.openConnetion();
 
                 if (command.ExecuteNonQuery() == 1)
                 {
+                    logger.Info("Данные с формы регистрации2 отправлены в базу данных");
                     MessageBox.Show("Данные введены успешно!", "Успех!");
                     this.Hide();
                     LoginForm rg = new LoginForm();
@@ -143,6 +146,7 @@ namespace FindYourFate
                 }
                 else
                 {
+                    logger.Info("Данные с формы регистрации2 не отправлены в базу данных");
                     MessageBox.Show("Данные не введены");
                 }
                 dataBase.closeConnetion();
@@ -188,6 +192,7 @@ namespace FindYourFate
 
                 if (command.ExecuteNonQuery() == 1)
                 {
+                    logger.Info("Данные с формы регистрации2 отправлены в базу данных");
                     MessageBox.Show("Данные введены успешно!", "Успех!");
                     this.Hide();
                     LoginForm rg = new LoginForm();
@@ -195,6 +200,7 @@ namespace FindYourFate
                 }
                 else
                 {
+                    logger.Info("Данные с формы регистрации2 не отправлены в базу данных");
                     MessageBox.Show("Данные не введены");
                 }
                 dataBase.closeConnetion();
@@ -240,6 +246,7 @@ namespace FindYourFate
 
                     if (command.ExecuteNonQuery() == 1)
                     {
+                        logger.Info("Данные с формы регистрации2 отправлены в базу данных");
                         MessageBox.Show("Данные введены успешно!", "Успех!");
                         this.Hide();
                         LoginForm rg = new LoginForm();
@@ -247,6 +254,7 @@ namespace FindYourFate
                     }
                     else
                     {
+                        logger.Info("Данные с формы регистрации2 не отправлены в базу данных");
                         MessageBox.Show("Данные не введены");
                     }
                     dataBase.closeConnetion();
@@ -286,6 +294,7 @@ namespace FindYourFate
 
                     if (command.ExecuteNonQuery() == 1)
                     {
+                        logger.Info("Данные с формы регистрации2 отправлены в базу данных");
                         MessageBox.Show("Данные введены успешно!", "Успех!");
                         this.Hide();
                         LoginForm rg = new LoginForm();
@@ -293,6 +302,7 @@ namespace FindYourFate
                     }
                     else
                     {
+                        logger.Info("Данные с формы регистрации2 не отправлены  в базу данных");
                         MessageBox.Show("Данные не введены");
                     }
                     dataBase.closeConnetion();

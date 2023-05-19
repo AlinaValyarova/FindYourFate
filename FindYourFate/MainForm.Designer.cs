@@ -37,13 +37,13 @@ namespace FindYourFate
             this.выйтиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -109,6 +109,8 @@ namespace FindYourFate
             // 
             this.toolStripLabel1.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.toolStripLabel1.IsLink = true;
+            this.toolStripLabel1.LinkColor = System.Drawing.Color.White;
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(627, 38);
             this.toolStripLabel1.Text = "---------------------------------------------------------------------------------" +
@@ -122,6 +124,13 @@ namespace FindYourFate
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(29, 38);
             this.toolStripButton3.Text = "toolStripButton3";
+            // 
+            // toolStripTextBox1
+            // 
+            this.toolStripTextBox1.AutoSize = false;
+            this.toolStripTextBox1.Name = "toolStripTextBox1";
+            this.toolStripTextBox1.Size = new System.Drawing.Size(200, 28);
+            this.toolStripTextBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripTextBox1_SelectedIndexChanged);
             // 
             // listBox1
             // 
@@ -186,13 +195,6 @@ namespace FindYourFate
             this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 18;
             this.label4.Text = "label4";
-            // 
-            // toolStripTextBox1
-            // 
-            this.toolStripTextBox1.AutoSize = false;
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(200, 27);
-            this.toolStripTextBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripTextBox1_SelectedIndexChanged);
             // 
             // MainForm
             // 

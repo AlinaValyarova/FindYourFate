@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 
 namespace FindYourFate
 {
@@ -23,6 +24,7 @@ namespace FindYourFate
             panel4.Visible = false;
         }
 
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private void ChangeForm_Load(object sender, EventArgs e)
         {
             List<Users> users = new List<Users>();  
@@ -275,13 +277,14 @@ namespace FindYourFate
                         amount += 1;
                     }
                     string insertResult = $" update Users set FirstName = n'{textBox22.Text}' , LastName = n'{textBox4.Text}', Email = n'{textBox11.Text}' , Password = n'{textBox3.Text}'," +
-                        $" Subjects = N'{sub}', Points = {points / amount}, Profile = {3}, Higher_ed = {1} where Id = {id}";
+                        $" Subjects = N'{sub}', Points = {points / amount}, Profile = {3}, Higher_ed = {0} where Id = {id}";
                     SqlCommand command = new SqlCommand(insertResult, dataBase.getConnection());
 
                     dataBase.openConnetion();
 
                     if (command.ExecuteNonQuery() == 1)
                     {
+                        logger.Info("Данные с окна изменения формы введены успешно");
                         MessageBox.Show("Данные введены успешно!", "Успех!");
                         this.Hide();
                         MainForm rg = new MainForm(label22.Text);
@@ -289,6 +292,7 @@ namespace FindYourFate
                     }
                     else
                     {
+                        logger.Info("Данные с окна изменения формы не введены");
                         MessageBox.Show("Данные не введены");
                     }
                     dataBase.closeConnetion();
@@ -357,6 +361,7 @@ $" Subjects = N'', Points = {0}, Profile = {profile}, Higher_ed = {education} wh
 
                         if (command.ExecuteNonQuery() == 1)
                         {
+                            logger.Info("Данные с окна изменения формы введены успешно");
                             MessageBox.Show("Данные введены успешно!", "Успех!");
                             this.Hide();
                             MainForm rg = new MainForm(label22.Text);
@@ -364,6 +369,7 @@ $" Subjects = N'', Points = {0}, Profile = {profile}, Higher_ed = {education} wh
                         }
                         else
                         {
+                            logger.Info("Данные с окна изменения формы не введены");
                             MessageBox.Show("Данные не введены");
                         }
                         dataBase.closeConnetion();
@@ -394,6 +400,7 @@ $" Subjects = N'', Points = {0}, Profile = {profile}, Higher_ed = {education} wh
 
                         if (command.ExecuteNonQuery() == 1)
                         {
+                            logger.Info("Данные с окна изменения формы введены успешно");
                             MessageBox.Show("Данные введены успешно!", "Успех!");
                             this.Hide();
                             MainForm rg = new MainForm(label22.Text);
@@ -401,6 +408,7 @@ $" Subjects = N'', Points = {0}, Profile = {profile}, Higher_ed = {education} wh
                         }
                         else
                         {
+                            logger.Info("Данные с окна изменения формы не введены");
                             MessageBox.Show("Данные не введены");
                         }
                         dataBase.closeConnetion();

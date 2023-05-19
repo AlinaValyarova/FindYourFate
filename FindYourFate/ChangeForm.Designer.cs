@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -72,8 +73,6 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -81,7 +80,8 @@
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -111,8 +111,6 @@
             this.panel5.Controls.Add(this.radioButton3);
             this.panel5.Controls.Add(this.radioButton2);
             this.panel5.Controls.Add(this.radioButton1);
-            this.panel5.Controls.Add(this.label3);
-            this.panel5.Controls.Add(this.label4);
             this.panel5.Controls.Add(this.textBox3);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.textBox4);
@@ -120,10 +118,39 @@
             this.panel5.Controls.Add(this.textBox22);
             this.panel5.Controls.Add(this.label21);
             this.panel5.Controls.Add(this.textBox11);
-            this.panel5.Location = new System.Drawing.Point(1, 0);
+            this.panel5.Location = new System.Drawing.Point(0, 1);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(730, 666);
             this.panel5.TabIndex = 53;
+            this.panel5.Controls.SetChildIndex(this.textBox11, 0);
+            this.panel5.Controls.SetChildIndex(this.label21, 0);
+            this.panel5.Controls.SetChildIndex(this.textBox22, 0);
+            this.panel5.Controls.SetChildIndex(this.label20, 0);
+            this.panel5.Controls.SetChildIndex(this.textBox4, 0);
+            this.panel5.Controls.SetChildIndex(this.label5, 0);
+            this.panel5.Controls.SetChildIndex(this.textBox3, 0);
+            this.panel5.Controls.SetChildIndex(this.radioButton1, 0);
+            this.panel5.Controls.SetChildIndex(this.radioButton2, 0);
+            this.panel5.Controls.SetChildIndex(this.radioButton3, 0);
+            this.panel5.Controls.SetChildIndex(this.panel1, 0);
+            this.panel5.Controls.SetChildIndex(this.panel2, 0);
+            this.panel5.Controls.SetChildIndex(this.panel3, 0);
+            this.panel5.Controls.SetChildIndex(this.button3, 0);
+            this.panel5.Controls.SetChildIndex(this.label22, 0);
+            this.panel5.Controls.SetChildIndex(this.button4, 0);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(61)))), ((int)(((byte)(209)))));
+            this.button4.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button4.Location = new System.Drawing.Point(20, 382);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(175, 50);
+            this.button4.TabIndex = 54;
+            this.button4.Text = "Перепройти тест";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // label22
             // 
@@ -559,27 +586,6 @@
             this.radioButton1.Text = "Я планирую сдавать ЕГЭ";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(61)))), ((int)(((byte)(209)))));
-            this.label3.Location = new System.Drawing.Point(166, 28);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(292, 38);
-            this.label3.TabIndex = 44;
-            this.label3.Text = "Изменить данные";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 148);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 17);
-            this.label4.TabIndex = 43;
-            this.label4.Text = "Введите пароль";
-            // 
             // textBox3
             // 
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -643,18 +649,26 @@
             this.textBox11.Size = new System.Drawing.Size(234, 28);
             this.textBox11.TabIndex = 36;
             // 
-            // button4
+            // label3
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(61)))), ((int)(((byte)(209)))));
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button4.Location = new System.Drawing.Point(20, 382);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(175, 50);
-            this.button4.TabIndex = 54;
-            this.button4.Text = "Перепройти тест";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(61)))), ((int)(((byte)(209)))));
+            this.label3.Location = new System.Drawing.Point(166, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(292, 38);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "Изменить данные";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 148);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(114, 17);
+            this.label4.TabIndex = 43;
+            this.label4.Text = "Введите пароль";
             // 
             // ChangeForm
             // 

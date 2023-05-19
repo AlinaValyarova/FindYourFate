@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FindYourFate;
 using System.Data.SqlClient;
+using NLog;
 
 namespace FindYourFate
 {
@@ -20,6 +21,7 @@ namespace FindYourFate
         public int O;
         public int P;
         public int A;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         public Test(string str)
         {
             InitializeComponent();
@@ -869,12 +871,14 @@ namespace FindYourFate
                     if (command.ExecuteNonQuery() == 1)
                     {
                         MessageBox.Show("Данные введены успешно!", "Успех!");
+                        logger.Info("Данные теста отправлены в базу данных");
                         this.Hide();
                         RegistrationForm2 rg = new RegistrationForm2();
                         rg.ShowDialog();
                     }
                     else
                     {
+                        logger.Info("Данные теста не отправлены в базу данных");
                         MessageBox.Show("Данные не введены");
                     }
                     dataBase.closeConnetion();
@@ -888,6 +892,7 @@ namespace FindYourFate
 
                     if (command.ExecuteNonQuery() == 1)
                     {
+                        logger.Info("Данные теста отправлены в базу данных");
                         MessageBox.Show("Данные введены успешно!", "Успех!");
                         this.Hide();
                         ChangeForm rg = new ChangeForm(label32.Text);
@@ -895,6 +900,7 @@ namespace FindYourFate
                     }
                     else
                     {
+                        logger.Info("Данные теста не отправлены в базу данных");
                         MessageBox.Show("Данные не введены");
                     }
                     dataBase.closeConnetion();
@@ -930,6 +936,7 @@ namespace FindYourFate
 
                     if (command.ExecuteNonQuery() == 1)
                     {
+                        logger.Info("Данные теста отправлены в базу данных");
                         MessageBox.Show("Данные введены успешно!", "Успех!");
                         this.Hide();
                         RegistrationForm2 rg = new RegistrationForm2();
@@ -937,6 +944,7 @@ namespace FindYourFate
                     }
                     else
                     {
+                        logger.Info("Данные теста не отправлены  в базу данных");
                         MessageBox.Show("Данные не введены");
                     }
                     dataBase.closeConnetion();
@@ -950,6 +958,7 @@ namespace FindYourFate
 
                     if (command.ExecuteNonQuery() == 1)
                     {
+                        logger.Info("Данные теста отправлены в базу данных");
                         MessageBox.Show("Данные введены успешно!", "Успех!");
                         this.Hide();
                         ChangeForm rg = new ChangeForm(label32.Text);
@@ -957,6 +966,7 @@ namespace FindYourFate
                     }
                     else
                     {
+                        logger.Info("Данные теста не в базу данных");
                         MessageBox.Show("Данные не введены");
                     }
                     dataBase.closeConnetion();

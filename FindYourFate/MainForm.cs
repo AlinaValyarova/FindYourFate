@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NLog;
 
 namespace FindYourFate
 {
@@ -30,12 +31,9 @@ namespace FindYourFate
             toolStripTextBox1.Items.Add("По убыванию баллов");
             toolStripTextBox1.Items.Add("По алфавиту");
             toolStripTextBox1.Text = "По умолчанию";
-
-
-
         }
 
-
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         public class TempList
         {
@@ -79,7 +77,6 @@ namespace FindYourFate
                         pf.Higher_ed = Convert.ToInt32(reader.GetValue(6));
                         pf.Speciality = ToUpperFirstLetter(reader.GetString(7));
 
-                        //listBox1.Items.Add(pf);
                         professions.Add(pf);
                         continue;
 
@@ -206,7 +203,6 @@ namespace FindYourFate
                 var roomsFont = new Font("Microsoft Sans Serif", 10.25f, FontStyle.Regular);
                 var priceFont = new Font("Microsoft Sans Serif", 10.25f, FontStyle.Regular);
 
-                // And, finally, we draw that text.
 
                 e.Graphics.DrawString(dataItem.Speciality, roomsFont, Brushes.Gray, e.Bounds.Left + 3, e.Bounds.Top + 40);
                 e.Graphics.DrawString(dataItem.Subjects, priceFont, Brushes.Black, e.Bounds.Left + 700, e.Bounds.Top + 30);
@@ -229,24 +225,27 @@ namespace FindYourFate
         private void изменитьАккаунтToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
+            logger.Info("Пользователь перешел на форму изменения аккаунта");
             ChangeForm cf = new ChangeForm(label4.Text);
             cf.Show();
         }
 
         private void узнатьРезультатыТестыНаТипЛичностиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Results res = new Results();
+            Results res = new Results(label4.Text);
+            logger.Info("Пользователь перешел на форму просмотра результатов");
             res.Show();
         }
 
         private void выйтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            logger.Info("Пользователь вышел из приложения");
             this.Close();
         }
 
         private void показатьБольшеПрофессийToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            logger.Info("Пользователь попросил показать больше профессий");
             var sortedList = professions.OrderByDescending(si => si.temp).ToList();
             for (int j = 5; j < 10; j++)
             {
@@ -257,16 +256,12 @@ namespace FindYourFate
 
         }
 
-        private void поУмолчаниюToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void toolStripTextBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             label1.Focus();
             if (toolStripTextBox1.SelectedItem.ToString() == "По возрастанию баллов")
             {
+                logger.Info("Пользователь выбрал сортировку по возрастанию баллов");
                 var myOtherList = listBox1.Items.Cast<Professions>().ToList();
                 var sortedList = myOtherList.OrderBy(si => si.Points).ToList();
                 listBox1.Items.Clear();
@@ -279,6 +274,7 @@ namespace FindYourFate
             }
             else if (toolStripTextBox1.SelectedItem.ToString() == "По убыванию баллов")
             {
+                logger.Info("Пользователь выбрал сортировку по убыванию баллов");
                 var myOtherList = listBox1.Items.Cast<Professions>().ToList();
                 var sortedList = myOtherList.OrderByDescending(si => si.Points).ToList();
                 listBox1.Items.Clear();
@@ -293,6 +289,7 @@ namespace FindYourFate
             }
             else if (toolStripTextBox1.SelectedItem.ToString() == "По алфавиту")
             {
+                logger.Info("Пользователь выбрал сортировку по алфавиту");
                 var myOtherList = listBox1.Items.Cast<Professions>().ToList();
                 var sortedList = myOtherList.OrderBy(si => si.Name).ToList();
                 listBox1.Items.Clear();
@@ -308,6 +305,7 @@ namespace FindYourFate
 
             else if(toolStripTextBox1.SelectedItem.ToString() == "По умолчанию")
             {
+                logger.Info("Пользователь выбрал сортировку по умолчанию");
                 listBox1.Items.Clear();
                 foreach (var u in users)
                 {

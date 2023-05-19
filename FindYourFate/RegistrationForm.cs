@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using NLog;
 
 namespace FindYourFate
 {
     public partial class RegistrationForm : Form
     {
         DataBase database = new DataBase();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         public RegistrationForm()
         {
             InitializeComponent();
@@ -64,7 +66,7 @@ namespace FindYourFate
         {
             if (textBox1.Text == "" || textBox2.Text == "" || textBox4.Text == "" || textBox3.Text == "")
             {
-
+                logger.Info("Пользователь оставил поля пустыми на окне регистрации");
                 MessageBox.Show("Поля не могут быть пустыми", "Ошибка");
             }
             else
@@ -100,10 +102,12 @@ namespace FindYourFate
                 if (command.ExecuteNonQuery() == 1)
                 {
                     panel1.Visible = true;
+                    logger.Info("Пользователь прошел первую часть регистрации");
                     MessageBox.Show("Данные введены успешно!", "Успех!");
                 }
                 else
                 {
+                    logger.Info("Данные первой части регистрации ввести не удалось");
                     MessageBox.Show("Данные не введены");
                 }
                 dataBase.closeConnetion();
@@ -113,6 +117,7 @@ namespace FindYourFate
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
+            logger.Info("Пользователь вернулся с форму регистрации на форму входа");
             LoginForm lg = new LoginForm();
             lg.Show();
         }
@@ -150,6 +155,7 @@ namespace FindYourFate
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
+            logger.Info("Пользователь перешел с формы регистрации на форму теста");
             Test test = new Test(label7.Text);
             test.ShowDialog();
         }
